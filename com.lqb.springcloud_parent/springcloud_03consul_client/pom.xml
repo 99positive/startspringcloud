@@ -17,15 +17,20 @@
   </properties>
 
   <dependencies>
-<!--    spring boot web-->
+    <!--spring boot web-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-<!--引入consul client依赖-->
+    <!--引入consul client依赖-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+    </dependency>
+    <!--健康检查依赖 actuator-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
   </dependencies>
 
