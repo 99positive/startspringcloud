@@ -14,6 +14,7 @@
     <module>springcloud_03consul_client</module>
     <module>springcloud_04users</module>
     <module>springcloud_05orders</module>
+    <module>springcloud_07product</module>
   </modules>
 
   <!--  继承springboot的父项目-->
