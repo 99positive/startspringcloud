@@ -15,6 +15,7 @@
     <module>springcloud_04users</module>
     <module>springcloud_05orders</module>
     <module>springcloud_07product</module>
+    <module>springcloud_06category</module>
   </modules>
 
   <!--  继承springboot的父项目-->
