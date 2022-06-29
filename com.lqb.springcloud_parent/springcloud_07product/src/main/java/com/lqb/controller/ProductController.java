@@ -23,7 +23,9 @@ public class ProductController {
     private int port;
 
     @GetMapping("/test6")
-    public Map<String, Object> getTest6(Integer pageNo, Integer pageSize, Integer query){
+    public Map<String, Object> getTest6(Integer pageNo, Integer pageSize, Integer query) throws InterruptedException {
+
+        Thread.sleep(3000);
         List<Goods> goods = new ArrayList<>();
         goods.add(new Goods(100.0, "SS", 10));
         goods.add(new Goods(29.0, "AA", 5));
