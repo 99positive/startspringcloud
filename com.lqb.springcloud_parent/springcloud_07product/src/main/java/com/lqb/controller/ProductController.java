@@ -5,7 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @Date 2022/6/19 22:08
@@ -17,6 +21,42 @@ public class ProductController {
 
     @Value("${server.port}")
     private int port;
+
+    @GetMapping("/test6")
+    public Map<String, Object> getTest6(Integer pageNo, Integer pageSize, Integer query){
+        List<Goods> goods = new ArrayList<>();
+        goods.add(new Goods(100.0, "SS", 10));
+        goods.add(new Goods(29.0, "AA", 5));
+        goods.add(new Goods(33.5, "BBB", 5));
+        goods.add(new Goods(77.0, "EE", 5));
+        goods.add(new Goods(69.0, "756", 10));
+        goods.add(new Goods(85.0, "BABY", 8));
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", 88);
+        map.put("pageNo", pageNo);
+        map.put("goods", goods.stream().filter(x -> x.getType().equals(query)).collect(Collectors.toList()));
+
+        return map;
+    }
+
+    @GetMapping("/test5")
+    public List<Goods> getTest5(@RequestParam("type") Integer type){
+        List<Goods> goods = new ArrayList<>();
+        goods.add(new Goods(100.0, "SS", 10));
+        goods.add(new Goods(29.0, "AA", 8));
+        goods.add(new Goods(33.5, "BBB", 6));
+        goods.add(new Goods(77.0, "EE", 7));
+        goods.add(new Goods(69.0, "756", 10));
+        goods.add(new Goods(85.0, "BABY", 8));
+
+        return goods.stream().filter(x -> x.getType().equals(type)).collect(Collectors.toList());
+    }
+
+    @GetMapping("/test4")
+    public Goods getTest4(){
+        return new Goods(100.0, "SS", 10);
+    }
 
     @GetMapping("/test3")
     public String getTest3(@RequestParam("ids") List<String> ids){

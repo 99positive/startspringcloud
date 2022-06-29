@@ -14,6 +14,17 @@ import java.util.List;
 @FeignClient("PRODUCT")
 public interface ProductClient {
 
+    @GetMapping("/test6")
+    String test6(@RequestParam("pageNo") Integer pageNo,
+                 @RequestParam("pageSize") Integer pageSize,
+                 @RequestParam("query") Integer query);
+
+    @GetMapping("/test5")
+    List<Goods> test5(@RequestParam("type") Integer type);
+
+    @GetMapping("/test4")
+    Goods test4();
+
     @GetMapping("/test3")
     String test3(@RequestParam("ids") List<String> ids);
 
