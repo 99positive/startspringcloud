@@ -18,6 +18,7 @@
     <module>springcloud_06category</module>
     <module>springcloud_08hystrix</module>
     <module>springcloud_09openfeign_hystrix</module>
+    <module>springcloud_10histrix_dashboard</module>
   </modules>
 
   <!--  继承springboot的父项目-->
