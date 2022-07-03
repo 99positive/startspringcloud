@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @Slf4j
+@RequestMapping("/product")
 public class ProductController {
 
     @Value("${server.port}")
