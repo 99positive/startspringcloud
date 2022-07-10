@@ -19,7 +19,8 @@
     <module>springcloud_08hystrix</module>
     <module>springcloud_09openfeign_hystrix</module>
     <module>springcloud_10histrix_dashboard</module>
-    <module>springcloud_11geteway</module>
+    <module>springcloud_11gateway</module>
+    <module>springcloud_12configserver</module>
   </modules>
 
   <!--  继承springboot的父项目-->
