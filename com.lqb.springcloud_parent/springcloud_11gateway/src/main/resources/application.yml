@@ -1,0 +1,42 @@
+server:
+  port: 8093
+
+spring:
+  application:
+    name: GATEWAY
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+    gateway:
+      routes:
+        - id: category_router #路由对象唯一标识
+#          uri: http://localhost:8086/ #类别服务地址
+          uri: lb://CATEGORY
+          predicates: #断言 用来配置路由规则
+            - Path=/getCategory
+        - id: product_router #路由对象唯一标识
+#          uri: http://localhost:8089/ #类别服务地址
+          uri: lb://PRODUCT # 请求负载均衡
+          predicates: #断言 用来配置路由规则
+            - Path=/product/** # 路径
+            - After=2022-07-09T19:30:00+08:00[Asia/Shanghai] # 在这个时间之后
+            - Before=2022-07-09T20:30:00+08:00[Asia/Shanghai] # 在这个时间之前
+            - Between=2022-07-09T19:30:00+08:00[Asia/Shanghai],2022-07-09T20:30:00+08:00[Asia/Shanghai] # 时间间隔
+            - Cookie=name,libai # 请求cookie
+            - Cookie=name,[A-Za-z0-9] # 请求cookie过滤
+            - Method=GET  # 请求方式
+            - Header=X-Request-Id,\d+ #请求头
+          filters:
+            - AddRequestHeader=X-Request-red,blue # 添加header路径值
+            - AddRequestParameter=red,blue # 添加Parameter路径值
+            - AddResponseHeader=X-Response-Red,Blue # 添加Response Header路径
+            - PrefixPath=/product # 添加前缀路径
+            - StripPrefix=1 #去掉前缀第几个路径
+# 暴露所有的filter
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
