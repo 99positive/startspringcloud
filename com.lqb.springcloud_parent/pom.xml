@@ -21,6 +21,7 @@
     <module>springcloud_10histrix_dashboard</module>
     <module>springcloud_11gateway</module>
     <module>springcloud_12configserver</module>
+    <module>springcloud_13configclient</module>
   </modules>
 
   <!--  继承springboot的父项目-->
